@@ -227,14 +227,14 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "builder",
-          "expr": "rate(http_server_requests_seconds_count{uri=\"$uri\"}[$__rate_interval])",
+          "editorMode": "code",
+          "expr": "sum(rate(http_server_requests_seconds_count{uri=\"$uri\"}[$__rate_interval])) by (status)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "TPS",
+      "title": "HTTP Status TPS",
       "type": "timeseries"
     },
     {
@@ -667,13 +667,13 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Spring Boot Micrometer Prometheus HTTP Server Requests",
   "uid": "cf8b16a1-35eb-4d58-ad1b-1497c8b0d420",
-  "version": 4,
+  "version": 6,
   "weekStart": ""
 }
